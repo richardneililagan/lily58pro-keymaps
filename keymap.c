@@ -8,6 +8,8 @@
   #include "ssd1306.h"
 #endif
 
+#include "rgblight.h"
+
 extern uint8_t is_master;
 
 enum layer_number {
@@ -78,9 +80,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 
 [_RAISE] = LAYOUT( \
-  _______, _______, _______, _______, _______, _______,                     _______, _______, _______, _______, _______, _______, \
+  RGB_TOG, RGB_MOD, RGB_RMOD,_______, _______, _______,                     _______, _______, _______, _______, _______, _______, \
   KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                        KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______, \
-  KC_F1,  KC_F2,    KC_F3,   KC_F4,   KC_F5,   KC_F6,                       XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX, \
+  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,                       XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX, \
   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,   _______, _______,  KC_PLUS, KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS, \
                              _______, _______, _______,  _______, _______,  _______, _______, _______ \
 ),
@@ -161,3 +163,30 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
   return true;
 }
+
+#ifdef RGBLIGHT_ENABLE
+// :: set up configurations and hooks related to RGB underglow lighting ----------------
+
+const rgblight_segment_t PROGMEM rgb_base_light_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    { 0, 10, HSV_CYAN }
+);
+
+const rgblight_segment_t* const PROGMEM rgb_light_layers[] = RGBLIGHT_LAYERS_LIST(
+    rgb_base_light_layer
+);
+
+void keyboard_post_init_user (void) {
+    // :: TODO
+    rgblight_layers = rgb_light_layers;
+    rgblight_set_layer_state(0, true);
+}
+
+// layer_state_t layer_state_set_user(layer_state_t state) {
+//     return state;
+// }
+
+// bool led_update_user(led_t led_state) {
+//     return true;
+// }
+
+#endif
