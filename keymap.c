@@ -26,7 +26,6 @@ extern uint8_t is_master;
 
 // :: These define the layer keymaps in the keyboard.
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  // [_QWERTY] = LAYER_QWERTY,
   [_COLEMAK] = LAYER_COLEMAK_DHM,
   [_GAMER] = LAYER_GAMER,
   [_LOWER] = LAYER_LOWER,
@@ -92,10 +91,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
 
-layer_state_t layer_state_set_user(layer_state_t state) {
-  // :: activate ADJUST layer if both LOWER and RAISE are active
-  return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
-}
+// layer_state_t layer_state_set_user(layer_state_t state) {
+//   // :: activate ADJUST layer if both LOWER and RAISE are active
+//   return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
+// }
 
 #ifdef RGBLIGHT_ENABLE
 // :: set up configurations and hooks related to RGB underglow lighting ----------------
