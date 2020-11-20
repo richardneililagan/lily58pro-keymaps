@@ -11,31 +11,22 @@
 #include "rgblight.h"
 
 // :: layer definitions
-#include "layers/qwerty.h"
-#include "layers/colemak-dhm.h"
-#include "layers/gamer.h"
-#include "layers/lower.h"
-#include "layers/raise.h"
-#include "layers/adjust.h"
-#include "layers/mod.h"
+#include "layers/definitions.h"
+#include "layers/keymaps/qwerty.h"
+#include "layers/keymaps/colemak-dhm.h"
+#include "layers/keymaps/gamer.h"
+#include "layers/keymaps/lower.h"
+#include "layers/keymaps/raise.h"
+#include "layers/keymaps/adjust.h"
+#include "layers/keymaps/mod.h"
 
 // :: ----------------------------------------------------------------------------------
 
 extern uint8_t is_master;
 
-enum layer_number {
-  _QWERTY = 0,
-  _COLEMAK,
-  _GAMER,
-  _LOWER,
-  _RAISE,
-  _ADJUST,
-  _MOD
-};
-
 // :: These define the layer keymaps in the keyboard.
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  [_QWERTY] = LAYER_QWERTY,
+  // [_QWERTY] = LAYER_QWERTY,
   [_COLEMAK] = LAYER_COLEMAK_DHM,
   [_GAMER] = LAYER_GAMER,
   [_LOWER] = LAYER_LOWER,
