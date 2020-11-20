@@ -29,7 +29,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define TAPPING_TERM 100
 
 // #define OLED_FONT_H "keyboards/lily58/lib/glcdfont.c"
-#define OLED_DISABLE_TIMEOUT
+// #define OLED_DISABLE_TIMEOUT
 
 // :: RGB lighting configuration
 #undef RGBLED_NUM
