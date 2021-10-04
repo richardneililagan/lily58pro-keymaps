@@ -15,6 +15,7 @@
 #define L_ADJUST (1 << 4)
 #define L_ADJUST_TRI (L_RAISE | L_LOWER)  // :: when RAISE and LOWER are held together
 #define L_MOD (1 << 5)
+#define L_NUMPAD (1 << 6)
 
 // :: ---
 
@@ -45,6 +46,10 @@ const char *read_layer_state(void) {
 
     case L_MOD:
       snprintf(layer_state_str, sizeof(layer_state_str), "Layer: Mod");
+      break;
+
+    case L_NUMPAD:
+      snprintf(layer_state_str, sizeof(layer_state_str), "Layer: Numpad");
       break;
 
     // :: ---

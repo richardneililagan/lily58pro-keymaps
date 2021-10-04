@@ -19,6 +19,7 @@
 #include "layers/keymaps/raise.h"
 #include "layers/keymaps/adjust.h"
 #include "layers/keymaps/mod.h"
+#include "layers/keymaps/numpad.h"
 
 // :: ----------------------------------------------------------------------------------
 
@@ -32,6 +33,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_RAISE] = LAYER_RAISE,
   [_ADJUST] = LAYER_ADJUST,
   [_MOD] = LAYER_MOD,
+  [_NUMPAD] = LAYER_NUMPAD
 };
 
 // Setting ADJUST layer RGB back to default

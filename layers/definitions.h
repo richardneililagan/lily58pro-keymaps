@@ -4,5 +4,6 @@ enum layer_number {
   _LOWER,
   _RAISE,
   _ADJUST,
-  _MOD
+  _MOD,
+  _NUMPAD
 };
