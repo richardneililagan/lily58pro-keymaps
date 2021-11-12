@@ -15,8 +15,8 @@
 #include "layers/keymaps/qwerty.h"
 #include "layers/keymaps/colemak-dhm.h"
 #include "layers/keymaps/gamer.h"
-#include "layers/keymaps/lower.h"
-#include "layers/keymaps/raise.h"
+#include "layers/keymaps/lower_2.h"
+#include "layers/keymaps/raise_2.h"
 #include "layers/keymaps/adjust.h"
 #include "layers/keymaps/mod.h"
 #include "layers/keymaps/numpad.h"
@@ -93,10 +93,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
 
-// layer_state_t layer_state_set_user(layer_state_t state) {
-//   // :: activate ADJUST layer if both LOWER and RAISE are active
-//   return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
-// }
+layer_state_t layer_state_set_user(layer_state_t state) {
+  // :: activate ADJUST layer if both LOWER and RAISE are active
+  return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
+}
 
 #ifdef RGBLIGHT_ENABLE
 // :: set up configurations and hooks related to RGB underglow lighting ----------------
@@ -115,4 +115,29 @@ void keyboard_post_init_user (void) {
   rgblight_layers = rgb_light_layers;
   rgblight_set_layer_state(0, true);
 #endif
+}
+
+void encoder_update_user(uint8_t index, bool clockwise) {
+  if (IS_LAYER_ON(_MOD)) {
+    // :: Volume controls on mod layer
+    if (clockwise) {
+      tap_code(KC_VOLU);
+    } else {
+      tap_code(KC_VOLD);
+    }
+  } else {
+    // :: Scroll otherwise
+    if (clockwise) {
+      tap_code(KC_WH_D);
+    } else {
+      tap_code(KC_WH_U);
+    }
+  }
+  // if (index == 0) {
+  //   if (clockwise) {
+  //     tap_code(KC_VOLU);
+  //   } else {
+  //     tap_code(KC_VOLD);
+  //   }
+  // }
 }

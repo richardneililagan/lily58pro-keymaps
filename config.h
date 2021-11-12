@@ -26,12 +26,23 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define USE_SERIAL_PD2
 
 #define TAPPING_FORCE_HOLD
-#define TAPPING_TERM 100
+#define TAPPING_TERM 200
 
 #define TAPPING_TOGGLE 3
 
 // #define OLED_FONT_H "keyboards/lily58/lib/glcdfont.c"
 // #define OLED_DISABLE_TIMEOUT
+
+// :: Encoders PIN configuration
+#define ENCODERS_PAD_A { F4 }
+#define ENCODERS_PAD_B { F5 }
+#define ENCODER_RESOLUTION 4
+
+// :: Mouse keys
+#define MK_3_SPEED
+#define MOUSEKEY_WHEEL_INTERVAL 10
+#define MK_W_OFFSET_1 40
+#define MK_W_OFFSET_UNMOD 40
 
 // :: RGB lighting configuration
 #undef RGBLED_NUM
